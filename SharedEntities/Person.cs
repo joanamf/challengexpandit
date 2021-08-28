@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Entities
+namespace SharedEntities
 {
-    public class Persons
+    public class Person
     {
 
         #region properties
@@ -20,7 +24,7 @@ namespace Entities
         public string UpdatedBy { get; set; }
         #endregion
 
-        public Persons()
+        public Person()
         {
 
         }
@@ -35,9 +39,16 @@ namespace Entities
             return result;
         }
 
-        public Persons getPersonById()
+        public static List<Person> getListPersons()
         {
-            Persons resultPerson = null;
+            List<Person> allPersons = new List<Person>();
+
+            return allPersons;
+        }
+
+        public Person getPersonById()
+        {
+            Person resultPerson = null;
 
             return resultPerson;
 

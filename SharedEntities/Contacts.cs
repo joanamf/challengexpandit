@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace SharedEntities
 {
-    public class Contacts
+    public class Contact
     {
         #region properties
-        public int IdContact {get; set;}
+        public int IdContact { get; set; }
         public int ContactType { get; set; }
         public string ContactNumber { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -19,7 +19,7 @@ namespace Entities
         public int PersonId { get; set; }
         #endregion
 
-        public Contacts()
+        public Contact()
         {
 
         }
@@ -33,9 +33,9 @@ namespace Entities
             return result;
         }
 
-        public Contacts getContactByPersonId()
+        public Contact getContactByPersonId()
         {
-            Contacts contactResult = null;
+            Contact contactResult = null;
 
             return contactResult;
         }
