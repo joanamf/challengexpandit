@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedEntities
+namespace SharedModels
 {
-    public class Contact
+    public class Contacts
     {
-        #region properties
-        public int IdContact { get; set; }
+
+        public int ContactId { get; set; }
         public int ContactType { get; set; }
         public string ContactNumber { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -17,29 +17,11 @@ namespace SharedEntities
         public DateTime UpdatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public int PersonId { get; set; }
-        #endregion
 
-        public Contact()
+        public Contacts()
         {
 
         }
 
-        #region functions
-
-        public bool saveContact()
-        {
-            bool result = false;
-
-            return result;
-        }
-
-        public Contact getContactByPersonId()
-        {
-            Contact contactResult = null;
-
-            return contactResult;
-        }
-
-        #endregion
     }
 }

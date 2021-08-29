@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestão de contactos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="challengexpandit.About" %>
+﻿<%@ Page Title="Gestão de contactos" Language="C#" MasterPageFile="~/master/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="challengexpandit.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
