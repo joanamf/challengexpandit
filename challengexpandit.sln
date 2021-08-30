@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "challengexpanditApi", "chal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModels\SharedModels.csproj", "{8F76B0C6-C5F9-4BB6-B515-1F618B9B718D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "challengexpanditV1", "challengexpanditV1\challengexpanditV1.csproj", "{894CE6F6-249C-40E3-8BFC-51EEF33199B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8F76B0C6-C5F9-4BB6-B515-1F618B9B718D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F76B0C6-C5F9-4BB6-B515-1F618B9B718D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F76B0C6-C5F9-4BB6-B515-1F618B9B718D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894CE6F6-249C-40E3-8BFC-51EEF33199B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894CE6F6-249C-40E3-8BFC-51EEF33199B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894CE6F6-249C-40E3-8BFC-51EEF33199B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894CE6F6-249C-40E3-8BFC-51EEF33199B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
