@@ -13,10 +13,10 @@ namespace challengexpanditV1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class challengexpanditDBEntities : DbContext
+    public partial class challengexpanditDBEntities2 : DbContext
     {
-        public challengexpanditDBEntities()
-            : base("name=challengexpanditDBEntities")
+        public challengexpanditDBEntities2()
+            : base("name=challengexpanditDBEntities2")
         {
         }
     
@@ -25,7 +25,6 @@ namespace challengexpanditV1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Contacts> Contacts { get; set; }
         public virtual DbSet<Persons> Persons { get; set; }
     }
 }

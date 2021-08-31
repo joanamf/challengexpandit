@@ -5,19 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="challengexpanditDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Contacts">
-          <Key>
-            <PropertyRef Name="contactId" />
-          </Key>
-          <Property Name="contactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="contactType" Type="int" Nullable="false" />
-          <Property Name="contactNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="createdOn" Type="datetime" Nullable="false" />
-          <Property Name="createdBy" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="updatedOn" Type="datetime" Nullable="false" />
-          <Property Name="updatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="personId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Persons">
           <Key>
             <PropertyRef Name="personId" />
@@ -29,50 +16,23 @@
           <Property Name="city" Type="nvarchar" MaxLength="50" />
           <Property Name="email" Type="nvarchar" MaxLength="250" />
           <Property Name="photo" Type="image" />
+          <Property Name="mobileNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="homeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="officeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="otherNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="createdOn" Type="datetime" Nullable="false" />
           <Property Name="createdBy" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="updatedOn" Type="datetime" Nullable="false" />
           <Property Name="updatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Contacts_Persons">
-          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
-          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Persons">
-              <PropertyRef Name="personId" />
-            </Principal>
-            <Dependent Role="Contacts">
-              <PropertyRef Name="personId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="challengexpanditDBModelStoreContainer">
-          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Contacts_Persons" Association="Self.FK_Contacts_Persons">
-            <End Role="Persons" EntitySet="Persons" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="challengexpanditDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Contacts">
-          <Key>
-            <PropertyRef Name="contactId" />
-          </Key>
-          <Property Name="contactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="contactType" Type="Int32" Nullable="false" />
-          <Property Name="contactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="createdOn" Type="DateTime" Nullable="false" />
-          <Property Name="createdBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="updatedOn" Type="DateTime" Nullable="false" />
-          <Property Name="updatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="personId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Persons" Relationship="Self.FK_Contacts_Persons" FromRole="Contacts" ToRole="Persons" />
-        </EntityType>
         <EntityType Name="Persons">
           <Key>
             <PropertyRef Name="personId" />
@@ -84,52 +44,24 @@
           <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="createdOn" Type="DateTime" Nullable="false" />
+          <Property Name="mobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="homeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="officeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="otherNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="createdBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="updatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="updatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_Persons" FromRole="Persons" ToRole="Contacts" />
         </EntityType>
-        <Association Name="FK_Contacts_Persons">
-          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
-          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Persons">
-              <PropertyRef Name="personId" />
-            </Principal>
-            <Dependent Role="Contacts">
-              <PropertyRef Name="personId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="challengexpanditDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+        <EntityContainer Name="challengexpanditDBEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Persons" EntityType="Self.Persons" />
-          <AssociationSet Name="FK_Contacts_Persons" Association="Self.FK_Contacts_Persons">
-            <End Role="Persons" EntitySet="Persons" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="challengexpanditDBModelStoreContainer" CdmEntityContainer="challengexpanditDBEntities">
-          <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="challengexpanditDBModel.Contacts">
-              <MappingFragment StoreEntitySet="Contacts">
-                <ScalarProperty Name="contactId" ColumnName="contactId" />
-                <ScalarProperty Name="contactType" ColumnName="contactType" />
-                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
-                <ScalarProperty Name="createdOn" ColumnName="createdOn" />
-                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
-                <ScalarProperty Name="updatedOn" ColumnName="updatedOn" />
-                <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
-                <ScalarProperty Name="personId" ColumnName="personId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="challengexpanditDBModelStoreContainer" CdmEntityContainer="challengexpanditDBEntities2">
           <EntitySetMapping Name="Persons">
             <EntityTypeMapping TypeName="challengexpanditDBModel.Persons">
               <MappingFragment StoreEntitySet="Persons">
@@ -140,6 +72,10 @@
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="homeNumber" ColumnName="homeNumber" />
+                <ScalarProperty Name="officeNumber" ColumnName="officeNumber" />
+                <ScalarProperty Name="otherNumber" ColumnName="otherNumber" />
                 <ScalarProperty Name="createdOn" ColumnName="createdOn" />
                 <ScalarProperty Name="createdBy" ColumnName="createdBy" />
                 <ScalarProperty Name="updatedOn" ColumnName="updatedOn" />

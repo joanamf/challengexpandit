@@ -16,13 +16,17 @@ namespace SharedModels
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
-        public byte[] photo { get; set; }
+        public byte[] Photo { get; set; }
+        public string MobileNumber { get; set; }
+        public string HomeNumber { get; set; }
+        public string OfficeNumber { get; set; }
+        public string OtherNumber { get; set; }
+
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public DateTime UpdatedOn { get; set; }
         public string UpdatedBy { get; set; }
 
-        public List<Contacts> Contacts { get; set; }
         #endregion
 
         public Person()
@@ -30,10 +34,6 @@ namespace SharedModels
         
         }
 
-        public Person(List<Contacts> contacts)
-        {
-            this.Contacts = contacts;
-        }
 
         #region functions
         public bool savePerson()
@@ -43,10 +43,8 @@ namespace SharedModels
             return result;
         }
 
-        public static List<Person> getListPersons(string connName)
+        public static DataTable getListPersonsDT(string connName)
         {
-            List<Person> allPerson = null;
-
             string sql = @"SELECT [personId]
                                  ,[name]
                                  ,[address]
@@ -54,6 +52,10 @@ namespace SharedModels
                                  ,[city]
                                  ,[email]
                                  ,[photo]
+                                 ,[mobileNumber]
+                                 ,[homeNumber]
+                                 ,[officeNumber]
+                                 ,[otherNumber]
                                  ,[createdOn]
                                  ,[createdBy]
                                  ,[updatedOn]
@@ -63,7 +65,16 @@ namespace SharedModels
 
             DataTable dt = DatabaseConnection.getDataTableFromDB(connName, sql, null);
 
-            if(dt != null)
+            return dt;
+        }
+
+        public static List<Person> getListPersons(string connName)
+        {
+            List<Person> allPerson = null;
+
+            DataTable dt = getListPersonsDT(connName);
+
+            if (dt != null)
             {
                 allPerson = new List<Person>();
 
@@ -88,6 +99,10 @@ namespace SharedModels
                                  ,[city]
                                  ,[email]
                                  ,[photo]
+                                 ,[mobileNumber]
+                                 ,[homeNumber]
+                                 ,[officeNumber]
+                                 ,[otherNumber]
                                  ,[createdOn]
                                  ,[createdBy]
                                  ,[updatedOn]
@@ -125,6 +140,10 @@ namespace SharedModels
                 ZipCode = drConvert["zipCode"].ToString(),
                 City = drConvert["city"].ToString(),
                 Email = drConvert["email"].ToString(),
+                MobileNumber = drConvert["mobileNumber"].ToString(),
+                HomeNumber = drConvert["homeNumber"].ToString(),
+                OfficeNumber = drConvert["officeNumber"].ToString(),
+                OtherNumber = drConvert["otherNumber"].ToString(),
                 CreatedOn = (DateTime)drConvert["createdOn"],
                 CreatedBy = drConvert["createdBy"].ToString(),
                 UpdatedOn = (DateTime)drConvert["updatedOn"],
@@ -133,11 +152,11 @@ namespace SharedModels
 
             try
             {
-                p.photo = (byte[])drConvert["photo"];
+                p.Photo = (byte[])drConvert["photo"];
             }
             catch 
             {
-                p.photo = new byte[0];
+                p.Photo = new byte[0];
             }
 
             return p;
